@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='utf-8'/>
+<title>Título</title>
+<style>
+    .verde{
+        background-color:green;
+    }
+    .rojo{
+        background-color:red;
+    }
+    .aciertos{
+        display:flex;
+        flex-wrap:wrap;
+    }
+    .aciertos div{
+        width:20px;
+        height:20px;
+        margin:4px;
+        border-radius:5px;
+    }
+</style>
+
+<script type='text/javascript'>
+    window.onload=inicio;
+    let preguntas=[
+        {pregunta:"¿Qué tipo de valor es true?",respuesta:"booleano"},
+        {pregunta:"¿Cómo creamos una constante?",respuesta:"const"},
+        {pregunta:"¿Con qué método añadimos un valor al final de un array?",respuesta:"push"}
+    ];
+    let aciertos=0;
+    let errores=0;
+    let numPregunta=-1;
+    let totalPreguntas=preguntas.length;
+    
+    function inicio(){
+        preguntar();
+        limpiar();
+        document.querySelector(".boton").onclick=evaluar;
+    }
+    function preguntar(){
+        numPregunta++;
+        if (numPregunta>=totalPreguntas){
+            // No hay más preguntas
+            alert("he acabado");
+        } else {           
+            document.querySelector(".pregunta").innerHTML=preguntas[numPregunta].pregunta;
+        }
+        limpiar();
+    }
+    function limpiar(){
+        document.querySelector(".respuesta").focus();
+        document.querySelector(".respuesta").value="";
+    }
+    function evaluar(){
+        let escrito=document.querySelector(".respuesta").value.toLowerCase().trim();
+        if (escrito==preguntas[numPregunta].respuesta){
+            aciertos++;
+            document.querySelector(".aciertos").insertAdjacentHTML("beforeend","<div class='verde'></div>");         
+        } else {
+            errores++;
+            document.querySelector(".aciertos").insertAdjacentHTML("beforeend","<div class='rojo'></div>");         
+        }       
+        preguntar();
+    }    
+</script>
+</head>
+<body>
+    <section>
+        <div class="pregunta"></div>
+        <input class="respuesta" type="text" spellcheck="false" autofocus/>
+        <button class="boton">Evaluar</button>
+        <div class="aciertos"></div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='utf-8'/>
+<title>Título</title>
+<style>
+   
+    .cajita{
+        border:1px solid red;
+        margin:10px;
+        padding:10px;
+    }
+</style>
+
+<script type='text/javascript'>
+    window.onload=inicio;
+    let respuestaUsuario;
+    let pregunta=-1;
+
+    let preguntas=["Indica tu sexo","Color pelo","¿Cuantos brazos tienes?"];
+    let respuesta1=["Mujer","Rubio",1];
+    let respuesta2=["Hombre","Moreno",2];
+    let respuesta3=["NS/NC","No tengo pelo",0];
+
+    function inicio(){
+        document.querySelector("button").onclick=siguiente;
+    }
+    function siguiente(){
+        pregunta++;
+        let caja=document.querySelector("#contenedor");
+        caja.innerHTML="";
+
+        caja.insertAdjacentHTML("beforeend",`
+        <div>${preguntas[pregunta]}:
+        <div>
+        <div><input type="radio" id="p1" name="pregunta"><label for="p1">${respuesta1[pregunta]}</label></div>
+        <div><input type="radio" id="p2" name="pregunta"><label for="p2">${respuesta2[pregunta]}</label></div>
+        <div><input type="radio" id="p3" name="pregunta"><label for="p3">${respuesta3[pregunta]}</label></div>
+        </div>
+        `);
+        for (let k=1; k<4;k++){
+            document.querySelector(`#p${k}`).onclick=r1;
+        }
+    }
+
+    function mostrarRespuesta(){
+        document.querySelector("#respuesta").innerHTML=`La respuesta a la pregunta <strong>${preguntas[pregunta]}</strong> ha sido  <strong>${respuestaUsuario}</strong>`;
+    }
+    function r1(){
+       respuestaUsuario=this.parentNode.querySelector("label").innerHTML;
+       mostrarRespuesta();
+    }
+    
+</script>
+</head>
+<body>
+    <button>Siguiente</button>
+    <div id="contenedor"></div> 
+    <div id="respuesta"></div>  
+</body>
+</html>

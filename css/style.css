@@ -1,0 +1,82 @@
+*, *::before, *::after, html{
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: 'coffee_extraregular';
+}
+
+body{
+
+    height: 100vh;
+    width: 100vw;
+    background-color: #625185;
+    background-image: url(../img/fondo-harry.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+
+}
+main{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.caja{
+    width: 400px;
+    height: 400px;
+    background-color: #F5EED2;
+    border-radius: 25px;
+    text-align: center;
+    box-sizing: border-box;
+	border: 5px white solid;
+	box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.74);
+
+
+}
+.grid-container{
+    display: grid;
+    grid-template-rows: 1fr 1.5fr 1.5fr;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
+    row-gap: 10px;
+
+
+}
+.grid-container div{
+    /* border: 1px solid red; */
+
+}
+#logoHarry{
+    width: 200px;
+}
+
+
+/* ..../ texto /.... */
+h1, h2, .text{
+    padding: 5px;
+}
+h1{
+    font-size: 5rem;
+    font-family: 'harry_pregular';
+    color: #5f6811;
+}
+h2{
+    font-size: 3rem;
+    color: #E84352;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.267);
+}
+.text{
+    font-size: 1.3rem;
+    border-radius: 10px;
+    font-family: 'stanberryregular';
+}
+/* ..../ botones /.... */
+button{
+    width: 150px;
+    height: 50px;
+}
